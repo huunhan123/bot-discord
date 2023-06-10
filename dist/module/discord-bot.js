@@ -27,7 +27,7 @@ class DiscordBot {
     }
     onReady() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`Bot đã sẵn sàng với tên ${this.client.user.username}`);
+            console.log(`The bot is ready with the name ${this.client.user.username}`);
             setInterval(() => {
                 this.sendMessage();
             }, config_1.default.getValue('interval') + this.delay * 10000);
@@ -38,15 +38,15 @@ class DiscordBot {
             try {
                 const targetChannel = yield this.client.channels.fetch(this.targetChannelId);
                 if (!targetChannel) {
-                    console.log('Không tìm thấy kênh');
+                    console.log('Channel not found');
                     return;
                 }
                 const message = data_1.default.getData();
                 yield targetChannel.send(message);
-                console.log('Tin nhắn đã được gửi thành công');
+                console.log('Message sent successfully');
             }
             catch (error) {
-                console.error('Đã xảy ra lỗi:', error);
+                console.error('An error has occurred:', error);
             }
         });
     }

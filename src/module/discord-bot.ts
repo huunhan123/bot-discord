@@ -20,7 +20,7 @@ class DiscordBot {
   }
 
   private async onReady() {
-    console.log(`Bot đã sẵn sàng với tên ${this.client.user.username}`);
+    console.log(`The bot is ready with the name ${this.client.user.username}`);
 
     setInterval(() => {
       this.sendMessage();
@@ -31,15 +31,15 @@ class DiscordBot {
     try {
       const targetChannel = await this.client.channels.fetch(this.targetChannelId) as unknown as TextChannel;
       if (!targetChannel) {
-        console.log('Không tìm thấy kênh');
+        console.log('Channel not found');
         return;
       }
 
       const message = DataReader.getData();
       await targetChannel.send(message);
-      console.log('Tin nhắn đã được gửi thành công');
+      console.log('Message sent successfully');
     } catch (error) {
-      console.error('Đã xảy ra lỗi:', error);
+      console.error('An error has occurred:', error);
     }
   }
 
